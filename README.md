@@ -1,8 +1,8 @@
 Criar ambiente em Python 3.7 e instalar bibliotecas de `requirements.txt`
 
 #exemplo url
-#http://127.0.0.1:8094/inadimplencia?p1=123456789
-#http://127.0.0.1:8093/fraude?p1=123456789
+#http://127.0.0.1:8094/inadimplencia?cpf=123456789
+#http://127.0.0.1:8093/fraude?cpf=123456789
 
 # instalando o docker
 sudo apt-get update

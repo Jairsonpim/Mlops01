@@ -31,7 +31,7 @@ def inadimplencia(request = request):
     print(request.values)
 
     try:
-        cpf = request.values.get('p1')
+        cpf = request.values.get('cpf')
         if cpf is None:
             raise NotImplementedError("Obrigatório informar cpf!")
 
