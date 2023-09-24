@@ -35,13 +35,6 @@ def fraude(request = request):
         if cpf is None:
             cpf = "1234567890"
 
-        #try:
-            #cpf1 = float(cpf)
-        #except:
-            #raise Exception("Os dados de cpf devem ser numéricos.")
-        
-        result = random.randint(0, 1)
-
         lista = ["Grupo de Jovens Profissionais, Persona Empresário de Pequeno Porte, Baixo Risco",
                 "Grupo de Clientes de Baixa Renda, Persona Estudante Universitário, Alto Risco",
                 "Grupo de Aposentados, Persona Aposentado com Renda Fixa, Baixo Risco",

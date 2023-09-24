@@ -14,13 +14,18 @@ sudo systemctl enable docker
 git clone https://github.com/Jairsonpim/Mlops01.git
 cd Mlops01
 
+# dockerfraude
+sudo docker build -t dockerfraude -f dockerbuilds/DockerFraude.txt .
+
 # criar o server
 sudo docker build -t platserver -f dockerbuilds/DockerServer.txt .
 
 # eliminar o script de servingmodel e chamar diretamente as duas apis aqui (inadimplencia e fraude)
 # mudar tambem o arquivo microservices.json para chamar as duas novas rotas
 sudo docker network create plat_network 
+
 sudo docker run -d --network plat_network -p 10001:8080 --restart always --name serving01 platserver python inadimplencia.py 8080
+
 sudo docker run -d --network plat_network -p 10002:8080 --restart always --name serving02 platserver python fraude.py 8080
 
 # executar model manager
