@@ -1,8 +1,11 @@
 Criar ambiente em Python 3.7 e instalar bibliotecas de `requirements.txt`
 
 #exemplo url
-#http://127.0.0.1:8094/inadimplencia?cpf=123456789
-#http://127.0.0.1:8093/fraude?cpf=123456789
+# http://127.0.0.1:8094/inadimplencia?cpf=123456789
+# http://127.0.0.1:8093/fraude?cpf=123456789
+
+# logar no shell utilizando o ssh para o usuario e ip da maquina virtual
+ssh <usuario>@<ip_publico>
 
 # instalando o docker
 sudo apt-get update
@@ -15,7 +18,9 @@ git clone https://github.com/Jairsonpim/Mlops01.git
 cd Mlops01
 
 # dockerfraude
-sudo docker build -t dockerfraude -f dockerbuilds/DockerFraude.txt .
+sudo docker build -t dckfraude -f dockerbuilds/DockerFraude.txt .
+
+sudo docker run -d -p 10005:8080 --restart always --name dockerfraude dckfraude python fraude.py 8080
 
 # criar o server
 sudo docker build -t platserver -f dockerbuilds/DockerServer.txt .
