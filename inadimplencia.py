@@ -33,12 +33,12 @@ def inadimplencia(request = request):
     try:
         cpf = request.values.get('cpf')
         if cpf is None:
-            raise NotImplementedError("Obrigatório informar cpf!")
+            cpf = "1234567890"
 
-        try:
-            cpf1 = float(cpf)
-        except:
-            raise Exception("Os dados de cpf devem ser numéricos.")
+        #try:
+            #cpf1 = float(cpf)
+        #except:
+            #raise Exception("Os dados de cpf devem ser numéricos.")
         
         result = random.randint(0, 1)
 
@@ -60,4 +60,5 @@ def inadimplencia(request = request):
 
 if __name__ == '__main__':
     print(f"Sou o processo server, id: {os.getpid()}, thread: {threading.current_thread().ident}")
-    app.run(port=8094, host='0.0.0.0')
+    #app.run(port=8094, host='0.0.0.0')
+    app.run(port=8080, host='0.0.0.0')
