@@ -34,11 +34,6 @@ def inadimplencia(request = request):
         cpf = request.values.get('cpf')
         if cpf is None:
             cpf = "1234567890"
-
-        #try:
-            #cpf1 = float(cpf)
-        #except:
-            #raise Exception("Os dados de cpf devem ser numéricos.")
         
         result = random.randint(0, 1)
 
@@ -47,7 +42,7 @@ def inadimplencia(request = request):
         else:                            
             resposta = 'normal'
 
-        ret = json.dumps({'Consulta para o cpf': cpf,
+        ret = json.dumps({'Consulta Risco de Inadimplencia para o CPF': cpf,
                           'Resultado': result,
                           'Situacao': resposta,
                           'Mensagem': "Obrigado pela chamada de API"}, cls=NpEncoder)

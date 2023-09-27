@@ -48,7 +48,7 @@ def fraude(request = request):
         
         resposta = random.choice(lista)
 
-        ret = json.dumps({'Consulta para o cpf': cpf,
+        ret = json.dumps({'Consulta Risco de Fraude para o CPF': cpf,
                           'Resultado': resposta,
                           'Mensagem': "Obrigado pela chamada de API"}, cls=NpEncoder)
         
