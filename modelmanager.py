@@ -30,8 +30,7 @@ def logapp(jsoncontent: dict, sufix: str = None):
 @app.route('/predict',methods=['GET','POST'])
 def predict(request = request):
 
-    print(1)
-    '''
+
     global SITE_NAME
     excluded_headers = ['content-encoding', 'content-length', 'transfer-encoding', 'connection']
     reqtime = datetime.datetime.utcnow()
@@ -42,45 +41,42 @@ def predict(request = request):
                             "args": request.args,
                             "content": {}},
                   "output": {}}
-    '''
-    print(2)
 
     #Carrega as configurações, a cada chamada
     with open('./config/microservices.json') as json_file:
         microservices_config = json.load(json_file)
 
-    print(3)
-
     try:
         mymodel = request.args['model']
         mymodel_url = microservices_config["models"][mymodel]['url']
-        #logg_track["model"] = mymodel
+        logg_track["model"] = mymodel
     except:
         raise Exception("O modelo deve ser informado no argumento 'model' e deve ser um modelo válido nas configuracoes (config/microservices.json)")
 
-    print(4)
+    json_content = try_or(lambda: request.get_json(), {})
 
-    #json_content = try_or(lambda: request.get_json(), {})
-    print(5)
-    #logg_track["input"]["content"] = json_content
-    print(6)
+    logg_track["input"]["content"] = json_content
+    
     if request.method=='GET':
-        resp = requests.get(url=mymodel_url) #, json=json_content)
+        #resp = requests.get(url=mymodel_url) 
+        resp = requests.get(url=mymodel_url, json=json_content)
     elif request.method=='POST':
-        resp = requests.post(url=mymodel_url) #, json=json_content)
+        #resp = requests.post(url=mymodel_url) 
+        resp = requests.post(url=mymodel_url, json=json_content)
     else:
         raise Exception("Método não suportado")
-    print(7)
-    #headers = [(name, value) for (name, value) in resp.raw.headers.items() if name.lower() not in excluded_headers]
-    response = Response(resp.content, resp.status_code) #, headers)
-    print(8)
+    
+    headers = [(name, value) for (name, value) in resp.raw.headers.items() if name.lower() not in excluded_headers]
+    
+    #response = Response(resp.content, resp.status_code)
+    response = Response(resp.content, resp.status_code, headers)
+
     resp_content = json.loads(resp.content)
-    print(9)
-    #logg_track["output"].update({"content": resp_content,
-                                 #"status_code": resp.status_code }) #,    "headers": headers})
-    print(10)
-    #logapp(jsoncontent=logg_track, sufix=reqtime.strftime("%Y%m%d-%H%M%S.%f"))
-    print(11)
+
+    logg_track["output"].update({"content": resp_content,
+                                 "status_code": resp.status_code,"headers": headers})
+
+    logapp(jsoncontent=logg_track, sufix=reqtime.strftime("%Y%m%d-%H%M%S.%f"))
 
     return response
 

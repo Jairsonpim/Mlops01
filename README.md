@@ -61,8 +61,9 @@ sudo docker build -t platserver -f dockerbuilds/DockerServer.txt .
 # mudar tambem o arquivo microservices.json para chamar as duas novas rotas
 sudo docker network create plat_network 
 
-sudo docker run -d --network plat_network -p 10002:8080 --restart always --name serving02 platserver python fraude.py 8080
 sudo docker run -d --network plat_network -p 10001:8080 --restart always --name serving01 platserver python inadimplencia.py 8080
+
+sudo docker run -d --network plat_network -p 10002:8080 --restart always --name serving02 platserver python fraude.py 8080
 
 # executar model manager
 bash geraconfig.sh
@@ -71,3 +72,14 @@ sudo docker run -d --network plat_network -p 443:8080 --restart always -v $(pwd)
 
 # Obs. avançada: Vamos avaliar a rede com a seguinte instrução:
 sudo docker network inspect plat_network
+
+
+# Remover containers
+sudo docker stop serving01
+sudo docker rm serving01
+
+sudo docker stop serving02
+sudo docker rm serving02
+
+sudo docker stop modelmanager
+sudo docker rm modelmanager
