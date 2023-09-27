@@ -55,7 +55,7 @@ sudo apt install docker.io
 sudo systemctl start docker
 sudo systemctl enable docker
 
-# criar o server
+# criar a imagem do server
 sudo docker build -t platserver -f dockerbuilds/DockerServer.txt .
 
 # mudar tambem o arquivo microservices.json para chamar as duas novas rotas

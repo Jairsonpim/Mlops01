@@ -30,7 +30,6 @@ def logapp(jsoncontent: dict, sufix: str = None):
 @app.route('/predict',methods=['GET','POST'])
 def predict(request = request):
 
-
     global SITE_NAME
     excluded_headers = ['content-encoding', 'content-length', 'transfer-encoding', 'connection']
     reqtime = datetime.datetime.utcnow()
@@ -58,17 +57,14 @@ def predict(request = request):
     logg_track["input"]["content"] = json_content
     
     if request.method=='GET':
-        #resp = requests.get(url=mymodel_url) 
         resp = requests.get(url=mymodel_url, json=json_content)
     elif request.method=='POST':
-        #resp = requests.post(url=mymodel_url) 
         resp = requests.post(url=mymodel_url, json=json_content)
     else:
         raise Exception("Método não suportado")
     
     headers = [(name, value) for (name, value) in resp.raw.headers.items() if name.lower() not in excluded_headers]
     
-    #response = Response(resp.content, resp.status_code)
     response = Response(resp.content, resp.status_code, headers)
 
     resp_content = json.loads(resp.content)

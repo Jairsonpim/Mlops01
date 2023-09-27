@@ -55,5 +55,4 @@ def inadimplencia(request = request):
 
 if __name__ == '__main__':
     print(f"Sou o processo server, id: {os.getpid()}, thread: {threading.current_thread().ident}")
-    #app.run(port=8094, host='0.0.0.0')
     app.run(port=8080, host='0.0.0.0')
