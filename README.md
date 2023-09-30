@@ -35,7 +35,8 @@ http://localhost:10005/fraude?cpf=123456789
 
 # 01 - Necessário Criar Maquina Virtual na Azure
 
-# 02 - Logar no shell da maquina virtual da azure utilizando o ssh para executar comandos a seguir
+# 02 - Logar no shell da maquina virtual da azure utilizando o ssh para executar comandos a seguir 
+# (OBS: necessario informar ip publico da maquina virtual na Azure!)
 ssh rm346617@<ip_publico>
 
 # 03 - Fazer copia do projeto para a maquina virtual
