@@ -35,15 +35,15 @@ def fraude(request = request):
         if cpf is None:
             cpf = "1234567890"
 
-        lista = ["Grupo de Jovens Profissionais, Persona Empresario de Pequeno Porte, Baixo Risco"
-                 "Grupo de Clientes de Baixa Renda, Persona Estudante Universitario, Alto Risco"
-                 "Grupo de Aposentados, Persona Aposentado com Renda Fixa, Baixo Risco"
-                 "Grupo de Empresarios de Medio Porte, Persona Proprietario de Restaurante, Medio Risco"
-                 "Grupo de Funcionarios Publicos, Persona Funcionario Publico com Estabilidade Financeira, Baixo Risco"
-                 "Grupo de Freelancers, Persona Trabalhador Autonomo com Flutuacoes de Renda, Medio Risco"
-                 "Grupo de Estudantes Secundaristas, Persona Estudante do Ensino Medio, Baixo Risco"
-                 "Grupo de Investidores, Persona Investidor de Alto Patrimonio Liquido, Baixo Risco"
-                 "Grupo de Profissionais de Tecnologia, Persona Desenvolvedor de Software, Medio Risco"
+        lista = ["Grupo de Jovens Profissionais, Persona Empresario de Pequeno Porte, Baixo Risco",
+                 "Grupo de Clientes de Baixa Renda, Persona Estudante Universitario, Alto Risco",
+                 "Grupo de Aposentados, Persona Aposentado com Renda Fixa, Baixo Risco",
+                 "Grupo de Empresarios de Medio Porte, Persona Proprietario de Restaurante, Medio Risco",
+                 "Grupo de Funcionarios Publicos, Persona Funcionario Publico com Estabilidade Financeira, Baixo Risco",
+                 "Grupo de Freelancers, Persona Trabalhador Autonomo com Flutuacoes de Renda, Medio Risco",
+                 "Grupo de Estudantes Secundaristas, Persona Estudante do Ensino Medio, Baixo Risco",
+                 "Grupo de Investidores, Persona Investidor de Alto Patrimonio Liquido, Baixo Risco",
+                 "Grupo de Profissionais de Tecnologia, Persona Desenvolvedor de Software, Medio Risco",
                  "Grupo de Agricultores, Persona Agricultor com Renda Variavel, Alto Risco"]
         
         resposta = random.choice(lista)
