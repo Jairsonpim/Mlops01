@@ -3,6 +3,10 @@
 # podem ser verificadas no notebook 'Trabalho mlops.ipynb' presente no diretório raiz 
 # do projeto.
 
+# OBS2: O Video de apresentação da Analise de Credito pode ser baixado a partir do
+# repositorio no git junto com todo este projeto!!!
+# git clone https://github.com/Jairsonpim/Mlops01.git
+
 # ####################################################################### #
 # ### Comandos de preparação do ambiente para itens 1 e 2 do trabalho ### #
 # ####################################################################### #
